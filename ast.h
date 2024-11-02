@@ -2,11 +2,13 @@
 #define AST_H
 
 typedef struct ASTNode {
-    char *token;             // Type of the node (e.g., "Function", "Return")
-    char *value;             // Original code representation
-    struct ASTNode *left;    // Pointer to the left child
-    struct ASTNode *right;   // Pointer to the right child
+    char *token;
+    char *value;
+    struct ASTNode *left;        // First child
+    struct ASTNode *right;       // Sibling
+    struct ASTNode *lastChild;   // Pointer to the last child for fast insertion avoiding O(n^2) complexity
 } ASTNode;
+
 
 // Function prototypes
 ASTNode *create_ast_node(const char *token, const char *value);

@@ -17,5 +17,9 @@ char* read_file(const char *filename) {
     content[length] = '\0'; // Null-terminate the string
 
     fclose(file);
+    if(!length){    
+        perror("One or both of given file/s is/are empty");
+        exit(0);
+    }
     return content;
 }

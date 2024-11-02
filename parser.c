@@ -14,9 +14,10 @@ ASTNode* parse_source_file(const char *filename) {
 
     // Create a root node for the AST
     ASTNode *root = create_ast_node("ROOT", "");
-
+    int isEmpty = 1;
     char line[256];
     while (fgets(line, sizeof(line), file)) {
+        isEmpty = 0;
         // Recognizing function definitions
         if (strstr(line, "int") || strstr(line, "void") || strstr(line, "float") || strstr(line, "char")) {
             ASTNode *func_node = create_ast_node("Function", line);
@@ -46,7 +47,10 @@ ASTNode* parse_source_file(const char *filename) {
             }
         }
     }
-
+    if(isEmpty){
+        perror("One or both of given file/s is/are empty");
+        exit(0);
+    }
     fclose(file);
     // Normalize function names in the AST
     normalize_ast(root);

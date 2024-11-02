@@ -64,7 +64,6 @@ int main(int argc, char *argv[]) {
 
     // Calculate frequency-based plagiarism percentage using hash tables, using Jaccard similarity
     double frequency_percentage = calculate_plagiarism_percentage(table1, table2);
-    printf("Frequency-Based Plagiarism Percentage: %.2f%%\n", frequency_percentage);
 
     // Generate n-grams for both token lists
     int num_tokens1 = count_tokens(tokens1);
@@ -80,12 +79,11 @@ int main(int argc, char *argv[]) {
 
     // Calculate sequence-based similarity using n-grams
     double ngram_percentage = ngram_similarity(ngrams1, num_ngrams1, ngrams2, num_ngrams2);
-    printf("n-gram Sequence Similarity Percentage: %.2f%%\n", ngram_percentage);
 
     // **AST Comparison**
    
     ASTNode *ast1 = parse_source_file(argv[1]);  
-ASTNode *ast2 = parse_source_file(argv[2]);  
+    ASTNode *ast2 = parse_source_file(argv[2]);  
 
     if (ast1 == NULL || ast2 == NULL) {
         printf("Error generating ASTs, its NULL.\n");
@@ -93,6 +91,8 @@ ASTNode *ast2 = parse_source_file(argv[2]);
     }
 
     double ast_similarity = compare_asts(ast1, ast2);
+    printf("Frequency-Based Plagiarism Percentage: %.2f%%\n", frequency_percentage);
+    printf("n-gram Sequence Similarity Percentage: %.2f%%\n", ngram_percentage);
     printf("AST-Based Similarity Percentage: %.2f%%\n", ast_similarity);
 
     

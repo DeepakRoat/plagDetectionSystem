@@ -84,7 +84,7 @@ int main(int argc, char *argv[]) {
 
     // **AST Comparison**
    
-ASTNode *ast1 = parse_source_file(argv[1]);  
+    ASTNode *ast1 = parse_source_file(argv[1]);  
 ASTNode *ast2 = parse_source_file(argv[2]);  
 
     if (ast1 == NULL || ast2 == NULL) {

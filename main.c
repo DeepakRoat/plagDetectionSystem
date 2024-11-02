@@ -9,6 +9,7 @@
 #include "ast.h"
 #include "parser.h"
 #include <time.h>
+#include <math.h>
 // Main function
 //argc-->argument count for input files, it is = 3 as we are taking 2 input files, i.e ./plagiarism_detector test1.c test2.c (3 arguments)
 //argv --> here, argv[0] = ./plagiarism_detector, argv[1] = test1.c, argv[2] = test2.c

@@ -16,13 +16,13 @@ ASTNode *create_ast_node(const char *token, const char *value) {
 // Add a child node to a parent node
 void add_child(ASTNode *parent, ASTNode *child) {
     if (parent->left == NULL) {
+        // No children, so add the first child and set lastChild to it
         parent->left = child;
+        parent->lastChild = child;
     } else {
-        ASTNode *current = parent->left;
-        while (current->right != NULL) {
-            current = current->right;
-        }
-        current->right = child;
+        // Add the new child to the end of the sibling chain
+        parent->lastChild->right = child;
+        parent->lastChild = child; // Update lastChild pointer
     }
 }
 

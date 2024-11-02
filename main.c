@@ -97,7 +97,7 @@ ASTNode *ast2 = parse_source_file(argv[2]);
 
     
     // Combine the results for a final score (weighting all metrics equally)
-    double final_percentage = (0.2*(frequency_percentage) + 0.3*(ngram_percentage) + 0.5*(ast_similarity)) / 3.0;
+    double final_percentage = pow(0.2*pow(frequency_percentage,2) + 0.3*pow(ngram_percentage, 2) + 0.5*pow(ast_similarity, 2), 0.5);
     printf("Final Plagiarism Score: %.2f%%\n", final_percentage);
 
    
